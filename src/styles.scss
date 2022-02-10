@@ -1,0 +1,185 @@
+//=====================================
+//  COLORS
+//=====================================
+$primary-100: #016fb9;
+$primary-200: #fb3640;
+$black: #071013;
+$grey: #d5d5d5;
+$white: #ffffff;
+
+//=====================================
+//  BASE
+//=====================================
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  max-width: 360px;
+  margin: auto;
+
+  //Only for testing purposes
+  height: 100vh;
+  border: 1px solid $black;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  border-radius: 14px;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px 15px;
+  user-select: none;
+}
+
+//=====================================
+//  ICONS
+//=====================================
+
+.i {
+  width: 1.4rem;
+  height: auto;
+  margin-left: 10px;
+  margin-right: -5px;
+  user-select: none;
+}
+
+//=====================================
+//  MAIN
+//=====================================
+
+header {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding: 10px 10px;
+}
+
+.link {
+  &_imgWrap {
+    float: right;
+    padding-left: 7px;
+    user-select: none;
+  }
+
+  &_desc {
+    text-align: right;
+    line-height: 1em;
+  }
+}
+
+.editBtns {
+  width: 66.67%;
+  margin: 2rem auto 1.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  &_add {
+    border: 1px solid $primary-100;
+    color: $primary-100;
+    stroke: $primary-100;
+  }
+
+  &_del {
+    border: 1px solid $primary-200;
+    color: $primary-200;
+    fill: $primary-200;
+  }
+
+  &_save {
+    border: 1px solid $primary-100;
+    color: $white;
+    background-color: $primary-100;
+    fill: $white;
+  }
+
+  &_discard {
+    border: 1px solid $primary-200;
+    color: $white;
+    background-color: $primary-200;
+    fill: $white;
+  }
+}
+
+#addTask {
+  width: 82%;
+  outline: none;
+  margin: auto;
+
+  &[contenteditable="true"] {
+    border: 1px solid $grey;
+    padding: 10px 10px;
+    min-height: 80px;
+    border-radius: 5px;
+  }
+
+  &[contenteditable="false"] {
+    border-top: 2px solid $grey;
+  }
+}
+
+@keyframes error-shake {
+  $offset: 2px;
+
+  25% {
+    left: $offset;
+  }
+  75% {
+    left: -$offset;
+  }
+}
+
+.addTask-error {
+  position: relative;
+  border-color: $primary-200 !important;
+  animation: error-shake 0.1s linear 4;
+}
+
+.tasksWrap {
+  padding-top: 0.7rem;
+  width: 82%;
+  margin: auto;
+}
+
+.task {
+  margin-top: 1rem;
+
+  label {
+    user-select: none;
+    margin-left: 10px;
+  }
+
+  &_hiddenInput {
+    position: absolute;
+    visibility: hidden;
+
+    &:checked + .i {
+      fill: $black;
+      stroke: $black;
+    }
+  }
+
+  &_checkBox {
+    fill: none;
+    margin: 0;
+    border: 2px solid $black;
+    padding: 1px;
+    cursor: pointer;
+  }
+
+  &_text {
+    display: inline-block;
+    margin-left: 1rem;
+    vertical-align: top;
+  }
+}

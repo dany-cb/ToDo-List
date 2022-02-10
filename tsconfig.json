@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./docs/",
+    "noImplicitAny": true,
+    "removeComments": true,
+    /* es2020 allows dynamic imports */
+    "target": "es5",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*", "ts"],
+  "exclude": ["node_modules"]
+}

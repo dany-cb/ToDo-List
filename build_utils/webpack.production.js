@@ -13,26 +13,26 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
-        test: /\.svg/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset",
         parser: {
           dataUrlCondition: {
-            maxSize: 4 * 1024, // 4kb
-          },
-        },
-      },
-    ],
+            maxSize: 4 * 1024 // 4kb
+          }
+        }
+      }
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[name].[contenthash:7].css",
+      chunkFilename: "[name].[contenthash:7].css"
     }),
     new BundleAnalyzerPlugin({
-      analyzerPort: 8000,
-    }),
-  ],
+      analyzerPort: 8000
+    })
+  ]
 };

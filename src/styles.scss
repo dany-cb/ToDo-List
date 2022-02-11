@@ -81,6 +81,10 @@ header {
   display: flex;
   justify-content: space-between;
 
+  button:active {
+    transform: scale(1.1);
+  }
+
   &_add {
     border: 1px solid $primary-100;
     color: $primary-100;
@@ -122,23 +126,6 @@ header {
   }
 }
 
-#addTask {
-  width: 82%;
-  outline: none;
-  margin: auto;
-
-  &[contenteditable="true"] {
-    border: 1px solid $grey;
-    padding: 10px 10px;
-    min-height: 80px;
-    border-radius: 5px;
-  }
-
-  &[contenteditable="false"] {
-    border-top: 2px solid $grey;
-  }
-}
-
 @keyframes error-shake {
   $offset: 2px;
 
@@ -150,10 +137,30 @@ header {
   }
 }
 
-.addTask-error {
-  position: relative;
-  border-color: $primary-200 !important;
-  animation: error-shake 0.1s linear 4;
+#addTask {
+  width: 82%;
+  outline: none;
+  min-height: 0;
+  padding: 0;
+  height: 0;
+  margin: auto;
+  border-top: 2px solid $grey;
+  // To make the reverse transition faster
+  transition: min-height 0.15s ease-out;
+
+  &[contenteditable="true"] {
+    border: 1px solid $grey;
+    border-radius: 5px;
+    min-height: 80px;
+    padding: 10px 10px;
+    transition: padding 0.5s ease-in-out, min-height 0.5s ease-in-out;
+
+    &.addTask-error {
+      position: relative;
+      border-color: $primary-200 !important;
+      animation: error-shake 0.1s linear 4;
+    }
+  }
 }
 
 .tasksWrap {

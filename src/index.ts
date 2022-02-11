@@ -2,11 +2,6 @@ import Icon from "./assets/githubLogo-32px.png";
 import "./styles.scss";
 import Task from "./task";
 
-function importAssets() {
-  const img = document.getElementById("logo") as HTMLImageElement;
-  img.src = Icon;
-}
-
 interface btn {
   elmnt: HTMLButtonElement;
   hidden: boolean;
@@ -14,6 +9,11 @@ interface btn {
 [];
 
 type btnType = "primaryBtns" | "onAddBtns" | "onDelBtns";
+
+function importAssets() {
+  const img = document.getElementById("logo") as HTMLImageElement;
+  img.src = Icon;
+}
 
 class TodoApp {
   btns: {
@@ -52,7 +52,7 @@ class TodoApp {
     /*  Primary Buttons */
     this.btns.primaryBtns[0].elmnt.addEventListener(
       "click",
-      this.onClickAdd.bind(this)
+      this.onClickAdd.bind(this, true)
     ); // Add Btn
     this.btns.primaryBtns[1].elmnt.addEventListener(
       "click",
@@ -108,20 +108,24 @@ class TodoApp {
    * Toggles the Primary Btns and the InputArea
    * Can be reused to reverse the changes
    */
-  onClickAdd() {
+  onClickAdd(setFocus: boolean) {
     this.inputArea.elmnt.contentEditable = this.inputArea.isEditable
       ? "false"
       : "true";
     this.inputArea.isEditable = !this.inputArea.isEditable;
     this.toggleBtnStates("primaryBtns", "onAddBtns");
-    this.inputArea.elmnt.focus();
+    if (setFocus) {
+      setTimeout(() => {
+        this.inputArea.elmnt.focus();
+      }, 500);
+    }
   }
 
   onClickSave() {
     if (this.inputArea.elmnt.innerText) {
       this.tasks.push(new Task(this.inputArea.elmnt.innerText, this.container));
       this.inputArea.elmnt.innerText = "";
-      this.onClickAdd();
+      this.onClickAdd(false);
     } else {
       this.inputArea.elmnt.classList.add("addTask-error");
       setTimeout(() => {
@@ -133,7 +137,7 @@ class TodoApp {
 
   onClickDiscard() {
     this.inputArea.elmnt.innerText = "";
-    this.onClickAdd();
+    this.onClickAdd(false);
   }
 
   onClickDelete() {

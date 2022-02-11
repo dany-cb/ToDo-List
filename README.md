@@ -1,5 +1,20 @@
 # ToDo-List
 
+## Setup
+
+- #### `npm i`
+    Installing necessary dependencies for the project
+
+- #### `npm run dev`
+    Starts a Development server on http://localhost:8080
+    > PS: Doesn't offer a detailed Sourcemap
+
+- #### `npm run prod`
+    Builds the project for Production and starts a Build analyzer on port: **8000** <br>
+    The project is compiled at \[root]/docs by default
+
+<br>
+
 ## Inspiration
 
 After learning

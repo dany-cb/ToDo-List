@@ -3,6 +3,7 @@
 //=====================================
 $primary-100: #016fb9;
 $primary-200: #fb3640;
+$primary-300: #4ac70c;
 $black: #071013;
 $grey: #d5d5d5;
 $white: #ffffff;
@@ -20,12 +21,8 @@ html {
 }
 
 body {
-  max-width: 360px;
+  max-width: 500px;
   margin: auto;
-
-  //Only for testing purposes
-  height: 100vh;
-  border: 1px solid $black;
 }
 
 p {
@@ -61,7 +58,7 @@ button {
 header {
   display: flex;
   width: 100%;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 10px 10px;
 }
 
@@ -109,6 +106,20 @@ header {
     background-color: $primary-200;
     fill: $white;
   }
+
+  &_done {
+    border: 1px solid $primary-300;
+    color: $white;
+    background-color: $primary-300;
+    fill: $white;
+  }
+
+  &_clearAll {
+    border: 1px solid $primary-200;
+    color: $white;
+    background-color: $primary-200;
+    fill: $white;
+  }
 }
 
 #addTask {
@@ -147,16 +158,29 @@ header {
 
 .tasksWrap {
   padding-top: 0.7rem;
+  padding-right: 10px;
+  padding-left: 10px;
   width: 82%;
   margin: auto;
+
+  &-delete {
+    label {
+      display: none;
+    }
+
+    .task_delBtn {
+      display: block;
+    }
+  }
 }
 
 .task {
   margin-top: 1rem;
+  display: flex;
+  // align-items: flex-start;
 
   label {
     user-select: none;
-    margin-left: 10px;
   }
 
   &_hiddenInput {
@@ -175,11 +199,24 @@ header {
     border: 2px solid $black;
     padding: 1px;
     cursor: pointer;
+    vertical-align: bottom;
   }
 
   &_text {
     display: inline-block;
     margin-left: 1rem;
-    vertical-align: top;
+    flex-grow: 1;
+    text-align: justify;
+  }
+
+  &_delBtn {
+    box-sizing: content-box;
+    display: none;
+    width: 17px;
+    height: auto;
+    fill: $grey;
+    margin-right: 10px;
+    padding: 5px;
+    cursor: pointer;
   }
 }

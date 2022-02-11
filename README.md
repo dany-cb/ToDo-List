@@ -40,6 +40,9 @@ The Draft file can be found [here](https://www.figma.com/file/LYQJ9chQrQSKmlHfSt
 - The _`label`_ element inside `div.task` has a left-down offset causing a click to the left or a little down of the checkbox activate the transition. On the other hand, clicking anywhere inside the checkbox works fine.
   
   > **Update**: The left offset was due to a _left-margin_ given to the svg element inside it. Removing the margin neutralized the left offset but the down offset still remains
+  >> Setting `vertical-align: bottom` on the SVG seems to have fixed the issue
+
+  **Status**: Solved ✅
 
 <br>
 
